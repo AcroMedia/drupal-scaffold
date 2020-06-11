@@ -1,6 +1,7 @@
 {
     "name": "cbanman/local-dev-docker4drupal",
     "type": "local-dev",
+    "version": "0.0.1",
     "authors": [
         {
             "name": "Cody Banman",
