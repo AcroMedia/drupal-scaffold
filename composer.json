@@ -1,0 +1,11 @@
+{
+    "name": "cbanman/local-dev-docker4drupal",
+    "type": "local-dev",
+    "authors": [
+        {
+            "name": "Cody Banman",
+            "email": "cbanman@acromedia.com"
+        }
+    ],
+    "require": {}
+}
