@@ -74,6 +74,21 @@ Once the package has been installed copy the contents of `example.docker4drupal.
 
 For more details see the [Docker4Drupal Documentation](https://wodby.com/docs/stacks/drupal/local/)
 
+### Hosts File Setup
+
+To be able to access the site, you will need to add some entries to your `hosts` file.
+
+Add these entries to your host file (`/etc/hosts` on \*nix,
+`C:\Windows\System32\drivers\etc\hosts` on Windows) to access the site
+at http://drupal.docker.localhost:8000:
+```
+127.0.0.1       drupal.docker.localhost
+127.0.0.1       mailhog.drupal.docker.localhost
+127.0.0.1       mariadb.drupal.docker.localhost
+```
+
+If you made changes to the `PROJECT_BASE_URL` in your `.env`, replace `drupal.docker.localhost` above with the URL you set.
+
 ## RUNNING
 
 When you've finished configuring your set up, you can use invoke commands to start everything up. 
