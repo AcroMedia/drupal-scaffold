@@ -8,5 +8,17 @@
             "email": "cbanman@acromedia.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "extra": {
+        "drupal-scaffold": {
+            "file-mapping": {
+                "[project-root]/.docker4drupal/drupal/settings.docker4drupal.php": ".docker4durpal/drupal/settings.docker4drupal.php",
+                "[project-root]/tasks/docker4drupal.py": "tasks/docker4drupal.py",
+                "[project-root]/docker-compose.yml": "docker-compose.yml",
+                "[project-root]/docker-sync.yml": "docker-sync.yml",
+                "[project-root]/example.docker4drupal.env": "example.docker4drupal.env",
+                "[project-root]/example.traefik.yml": "example.traefik.yml"
+            }
+        }
+    }
 }
