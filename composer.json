@@ -14,11 +14,16 @@
         "drupal-scaffold": {
             "file-mapping": {
                 "[project-root]/.docker4drupal/drupal/settings.docker4drupal.php": ".docker4drupal/drupal/settings.docker4drupal.php",
+                "[web-root]/sites/default/settings.php": {
+                    "mode": "append",
+                    "default": ".docker4drupal/drupal/settings.default.php",
+                    "append": ".docker4drupal/drupal/settings-append.txt"
+                },
                 "[project-root]/tasks/__init__.py": {
                     "mode": "append",
                     "force-append": true,
-                    "append": "tasks/__init__.py",
-                    "default": "tasks/__init__.py"
+                    "append": "tasks/init-append.txt",
+                    "default": "tasks/__init__.default.py"
                 },
                 "[project-root]/tasks/docker4drupal.py": "tasks/docker4drupal.py",
                 "[project-root]/docker-compose.yml": "docker-compose.yml",
