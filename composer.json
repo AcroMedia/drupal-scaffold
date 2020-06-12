@@ -1,5 +1,6 @@
 {
     "name": "cbanman/local-dev-docker4drupal",
+    "description": "Facilitates local development with Docker4Drupal",
     "type": "local-dev",
     "version": "0.0.1",
     "authors": [
@@ -13,6 +14,10 @@
         "drupal-scaffold": {
             "file-mapping": {
                 "[project-root]/.docker4drupal/drupal/settings.docker4drupal.php": ".docker4drupal/drupal/settings.docker4drupal.php",
+                "[project-root]/tasks/__init__.py": {
+                    "mode": "append",
+                    "append": "tasks/__init__.py"
+                },
                 "[project-root]/tasks/docker4drupal.py": "tasks/docker4drupal.py",
                 "[project-root]/docker-compose.yml": "docker-compose.yml",
                 "[project-root]/docker-sync.yml": "docker-sync.yml",
