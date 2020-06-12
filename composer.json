@@ -19,6 +19,7 @@
                     "default": ".docker4drupal/drupal/settings.php",
                     "append": ".docker4drupal/drupal/settings-append.txt"
                 },
+                "[project-root]/tasks/.gitkeep": "tasks/.gitkeep",
                 "[project-root]/tasks/__init__.py": {
                     "mode": "append",
                     "default": "tasks/__init__.py",

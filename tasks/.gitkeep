@@ -1,0 +1,4 @@
+# This file is being added so that the /tasks directory is created if it doesn't already exist.
+
+# There is a limitation with drupal-composer-scaffold that causes an error if an append has a default for
+# a directory that doesn't exists. See `[project-root]/tasks/__init__.py` in composer.json.
