@@ -16,6 +16,7 @@
                 "[project-root]/.docker4drupal/drupal/settings.docker4drupal.php": ".docker4drupal/drupal/settings.docker4drupal.php",
                 "[project-root]/tasks/__init__.py": {
                     "mode": "append",
+                    "force-append": true,
                     "append": "tasks/__init__.py"
                 },
                 "[project-root]/tasks/docker4drupal.py": "tasks/docker4drupal.py",
