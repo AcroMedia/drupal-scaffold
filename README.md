@@ -1,100 +1,36 @@
 ## INTRODUCTION
 
-This package aims to be all you need to add Docker4Drupal to your project.
-
-## REQUIREMENTS
-
-### Python 3
-
-You very likely have some version installed on your system, but you'll need to make sure you have Python 3 for Invoke to work properly.
-
-- Debian/Ubuntu: `sudo apt install python3`
-- Manual: https://www.python.org/downloads/your package management system on linux, for example on debian `sudo apt install python3`
-
-### Pip
-
-Pip is python's package management system, like composer is for PHP. You might also already have pip on your system or it can probably be installed via package manager.
-
-- Debian/Ubuntu: `sudo apt install python3-pip`
-- Manually: https://pip.pypa.io/en/stable/installing/
-
-### Invoke
-
-Now that you have pip, just do `python3 -m pip install invoke`
+This package aims to be all you need to meet full Acro Standards development specifications on your project.
 
 ## INSTALLATION
 
-### Composer File Changes
+### Composer
 
-There are a couple changes you need to make to your project's `composer.json` before running `composer require`.
-
-1. Add the repository definition
+1. Use composer to add package as a dev dependency
     ```
-    ...
-    "repositories": [
-        ...,
-        {
-            "type": "git",
-            "url": "https://git.acromedia.com/cbanman/local-dev-docker4drupal"
-        }
-    ],
-    ...
-    ```
-2. Add package to the `allowed-packages` for drupal-scaffold
-    ```
-    ...
-    "extra": {
-        "allowed-packages": [
-            "cbanman/local-dev-docker4drupal"
-        ]
-        ...
-    }
-    ...
-    ```
-3. Create the file `auth.json` in your base directory and add your [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
-   to authenticate with Gitlab to be able to pull the package. Be sure to add it to your `.gitignore`
-    ```
-    {
-      "http-basic": {
-        "git.acromedia.com": {
-          "username": "___token___",
-          "password": "<personal_access_token>"
-        }
-      }
-    }
-    ```
-4. Use composer to add package as a dev dependency
-    ```
-    composer require cbanman/local-dev-docker4drupal --dev
+    composer require acromedia/drupal-scaffold --dev
     ```
 
-## CONFIGURATION
+## Overridding
 
-Once the package has been installed copy the contents of `example.docker4drupal.env` into your `.env`. You can configure these variables as needed.
+### Invoke
 
-For more details see the [Docker4Drupal Documentation](https://wodby.com/docs/stacks/drupal/local/)
+This package provides standard tasks but you can also provide your own. It is recommended to provide your own additional tasks as opposed to overriding the existing tasks. Since everything is python based, you can also call on individual functions.
 
-### Hosts File Setup
+### Lando
 
-To be able to access the site, you will need to add some entries to your `hosts` file.
+This package provides a `.lando.base.yml` with a standard Drupal setup, you should provide your specific customization in a `.lando.yml` file and commit that to your project. If you wish to have specific config only to you, you can provide a `.lando.local.yml` file.
 
-Add these entries to your host file (`/etc/hosts` on \*nix,
-`C:\Windows\System32\drivers\etc\hosts` on Windows) to access the site
-at http://drupal.docker.localhost:8000:
-```
-127.0.0.1       drupal.docker.localhost
-127.0.0.1       mailhog.drupal.docker.localhost
-127.0.0.1       mariadb.drupal.docker.localhost
-```
+[Lando Docs](https://docs.lando.dev/config/lando.html)
 
-If you made changes to the `PROJECT_BASE_URL` in your `.env`, replace `drupal.docker.localhost` above with the URL you set.
+### NPM/Yarn - Package.json
 
-## RUNNING
+NPM does not have any mechanism for base files or overrides. This package provides package.json changes as appends, to hopefully work with your existing files, but you may have to manually merge changes.
 
-When you've finished configuring your set up, you can use invoke commands to start everything up. 
+### Composer
 
-```
-inv docker-up
-```
+Like NPM, composer doesn't have any mechanism for base files, so the same append workflow is used.
 
-To see a list of other available invoke commands, use `inv --list`. Commands for Docker4Drupal are prefixed with `docker-`.
+
+
+

@@ -1,6 +1,6 @@
 {
-    "name": "cbanman/local-dev-docker4drupal",
-    "description": "Facilitates local development with Docker4Drupal",
+    "name": "acromedia/drupal-scaffold",
+    "description": "Provides a development environment compatible with Acro Standards",
     "type": "local-dev",
     "version": "0.0.1",
     "authors": [
@@ -13,11 +13,11 @@
     "extra": {
         "drupal-scaffold": {
             "file-mapping": {
-                "[project-root]/.docker4drupal/drupal/settings.docker4drupal.php": ".docker4drupal/drupal/settings.docker4drupal.php",
+                "[web-root]/sites/default/settings.acro.php": "drupal/settings.acro.php",
                 "[web-root]/sites/default/settings.php": {
                     "mode": "append",
-                    "default": ".docker4drupal/drupal/settings.php",
-                    "append": ".docker4drupal/drupal/settings-append.txt"
+                    "default": "drupal/settings.php",
+                    "append": "drupal/settings-append.txt"
                 },
                 "[project-root]/tasks/.gitkeep": "tasks/.gitkeep",
                 "[project-root]/tasks/__init__.py": {
@@ -25,11 +25,8 @@
                     "default": "tasks/__init__.py",
                     "append": "tasks/init-append.txt"
                 },
-                "[project-root]/tasks/docker4drupal.py": "tasks/docker4drupal.py",
-                "[project-root]/docker-compose.yml": "docker-compose.yml",
-                "[project-root]/docker-sync.yml": "docker-sync.yml",
-                "[project-root]/example.docker4drupal.env": "example.docker4drupal.env",
-                "[project-root]/example.traefik.yml": "example.traefik.yml"
+                "[project-root]/invoke/acro.py": "tasks/acro.py",
+                "[project-root]/lando/.lando.base.yml": ".lando.base.yml",
             }
         }
     }
