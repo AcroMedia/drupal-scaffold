@@ -30,7 +30,18 @@ def drush(c, command):
     """
     c.run("lando drush {}".format(command), pty=True)
 
-@task()
+@task
+def solr_config(c):
+    c.run("lando drush solr-gsc solr ../solr-config.zip")
+    c.run("lando ssh -c 'unzip solr-config.zip -d solr-config'")
+    c.run("touch solr-config/mapping-ISOLatin1Accent.txt")
+    c.run("touch solr-config/synonyms.txt")
+    c.run("touch solr-config/stopwords.txt")
+    c.run("touch solr-config/protwords.txt")
+    c.run("lando ssh -s search -c 'solr create_core -c orange -d solr-config'")
+    c.run("rm solr-config -rf")
+
+@task(post=[solr_config])
 def init(c):
     """
     Creates an initial Drupal Orange product in a 'web' subdirectory
@@ -56,7 +67,6 @@ def init(c):
     start(c)
     c.run("lando ssh -c 'composer install'")
     c.run("lando drush si {} --db-url=mysql://drupal8:drupal8@database/drupal8 --account-mail={}".format(profile, email), pty=True)
-    solr_config(c)
 
 @task(pre=[start, update], post=[solr_config])
 def setup(c):
@@ -68,14 +78,3 @@ def setup(c):
 def confirm():
     confirm = input("This operation will setup a new Drupal Orange project, are you sure you want to proceed [y/N]")
     return confirm.lower() == 'y'
-
-@task
-def solr_config(c):
-    c.run("lando drush solr-gsc solr ../solr-config.zip")
-    c.run("lando ssh -c 'unzip solr-config.zip -d solr-config'")
-    c.run("touch solr-config/mapping-ISOLatin1Accent.txt")
-    c.run("touch solr-config/synonyms.txt")
-    c.run("touch solr-config/stopwords.txt")
-    c.run("touch solr-config/protwords.txt")
-    c.run("lando ssh -s search -c 'solr create_core -c orange -d solr-config'")
-    c.run("rm solr-config -rf")
