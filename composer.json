@@ -19,14 +19,15 @@
                     "default": "drupal/settings.php",
                     "append": "drupal/settings-append.txt"
                 },
-                "[project-root]/tasks/.gitkeep": "tasks/.gitkeep",
+                "[project-root]/tasks/.gitkeep": "invoke/.gitkeep",
                 "[project-root]/tasks/__init__.py": {
                     "mode": "append",
-                    "default": "tasks/__init__.py",
-                    "append": "tasks/init-append.txt"
+                    "default": "invoke/__init__.py",
+                    "append": "invoke/init-append.txt"
                 },
-                "[project-root]/invoke/acro.py": "tasks/acro.py",
-                "[project-root]/lando/.lando.base.yml": ".lando.base.yml",
+                "[project-root]/tasks/acro.py": "invoke/acro.py",
+                "[project-root]/.lando.base.yml": "lando/.lando.base.yml",
+                "[project-root]/package.json": "npm/package.json"
             }
         }
     }
