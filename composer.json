@@ -3,6 +3,7 @@
     "description": "Provides a development environment compatible with Acro Standards",
     "type": "local-dev",
     "version": "0.0.1",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "Cody Banman",
