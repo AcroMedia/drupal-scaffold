@@ -6,7 +6,19 @@ This package aims to be all you need to meet full Acro Standards development spe
 
 ### Composer
 
-1. Use composer to add package as a dev dependency
+1. You will need to specifically allow non-standard scaffold packages. Add the following to your composer.json
+
+```
+    "extra": {
+        "drupal-scaffold": {
+            "allowed-packages": [
+                "acromedia/drupal-scaffold"
+            ]
+        }
+    }
+```
+
+2. Use composer to add package as a dev dependency
     ```
     composer require acromedia/drupal-scaffold --dev
     ```
