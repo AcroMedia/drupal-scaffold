@@ -2,20 +2,13 @@
 
 // @codingStandardsIgnoreFile
 
-/**
- * @file
- * Docker4Drupal specific site configuration file.
- *
- * @see https://github.com/wodby/docker4drupal
- */
-
 $databases['default']['default'] = [
-  'driver' => getenv('DB_DRIVER'),
-  'database' => getenv('DB_NAME'),
-  'username' => getenv('DB_USER'),
-  'password' => getenv('DB_PASSWORD'),
-  'host' => getenv('DB_HOST'),
-  'port' => getenv('DB_PORT'),
+  'driver' => "mysql",
+  'database' => "drupal8",
+  'username' => "drupal8",
+  'password' => "drupal8",
+  'host' => "database",
+  'port' => "3306",
 ];
 
 // md5('127.0.0.1').

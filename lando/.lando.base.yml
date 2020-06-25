@@ -9,8 +9,6 @@ config:
 proxy:
   mailhog:
     - mail.orange.lndo.site
-  database:
-    - database.orange.lndo.site
 
 services:
   search:

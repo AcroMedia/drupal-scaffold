@@ -17,8 +17,8 @@
                 "[web-root]/sites/default/settings.acro.php": "drupal/settings.acro.php",
                 "[web-root]/sites/default/settings.php": {
                     "mode": "append",
-                    "default": "drupal/settings.php",
-                    "append": "drupal/settings-append.txt"
+                    "append": "drupal/settings-append.txt",
+                    "force-append": true
                 },
                 "[project-root]/tasks/.gitkeep": "invoke/.gitkeep",
                 "[project-root]/tasks/__init__.py": {
