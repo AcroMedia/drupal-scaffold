@@ -1,0 +1,5 @@
+name: REPLACE_NAME
+
+proxy:
+  mailhog:
+    - mail.REPLACE_NAME.lndo.site

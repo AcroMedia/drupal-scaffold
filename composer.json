@@ -19,6 +19,11 @@
                     "mode": "append",
                     "append": "drupal/settings-append.txt",
                     "force-append": true
+                }, 
+                "[web-root]/core/phpunit.xml": {
+                    "mode": "replace",
+                    "path": "drupal/phpunit.xml",
+                    "overwrite": false 
                 },
                 "[project-root]/tasks/.gitkeep": "invoke/.gitkeep",
                 "[project-root]/tasks/__init__.py": {
@@ -28,6 +33,11 @@
                 },
                 "[project-root]/tasks/acro.py": "invoke/acro.py",
                 "[project-root]/.lando.base.yml": "lando/.lando.base.yml",
+                "[project-root]/.lando.yml": {
+                    "mode": "replace",
+                    "path": "lando/.lando.yml",
+                    "overwrite": false
+                },
                 "[project-root]/package.json": "npm/package.json"
             }
         }
