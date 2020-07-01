@@ -62,6 +62,9 @@ services:
         DRUPAL_NIGHTWATCH_IGNORE_DIRECTORIES: node_modules,vendor,.*,sites/*/files,sites/*/private,sites/simpletest
 
 tooling:
+  phpunit:
+    service: appserver
+    cmd: ./bin/phpunit -c web/core
   nightwatch:
     service: acro
     cmd: cd /app/web/core && yarn test:nightwatch

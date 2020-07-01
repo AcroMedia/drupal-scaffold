@@ -1,5 +1,6 @@
 from invoke import task
 import boto3
+import fileinput
 
 @task
 def start(c):
@@ -31,7 +32,7 @@ def drush(c, command):
     c.run("lando drush {}".format(command), pty=True)
 
 @task
-def solr_config(c):
+def solrconfig(c):
     c.run("lando drush solr-gsc solr ../solr-config.zip")
     c.run("lando ssh -c 'unzip solr-config.zip -d solr-config'")
     c.run("touch solr-config/mapping-ISOLatin1Accent.txt")
@@ -41,7 +42,7 @@ def solr_config(c):
     c.run("lando ssh -s search -c 'solr create_core -c orange -d solr-config'")
     c.run("rm solr-config -rf")
 
-@task(post=[solr_config])
+@task(post=[solrconfig])
 def init(c):
     """
     Creates an initial Drupal Orange product in a 'web' subdirectory
@@ -68,7 +69,7 @@ def init(c):
     c.run("lando ssh -c 'composer install'")
     c.run("lando drush si {} --db-url=mysql://drupal8:drupal8@database/drupal8 --account-mail={}".format(profile, email), pty=True)
 
-@task(pre=[start, update], post=[solr_config])
+@task(pre=[start, update], post=[solrconfig])
 def setup(c):
     """
     Sets up the containers, downloads dependencies and updates content
@@ -78,3 +79,16 @@ def setup(c):
 def confirm():
     confirm = input("This operation will setup a new Drupal Orange project, are you sure you want to proceed [y/N]")
     return confirm.lower() == 'y'
+
+@task
+def setname(c):
+    projectName = input('Project name: ')
+    url = 'http://' + projectName + '.lndo.site'
+
+    with fileinput.FileInput('web/core/phpunit.xml', inplace=True, backup='.bak') as file:
+        for line in file:
+            print(line.replace('REPLACE_URL', url), end='')
+
+    with fileinput.FileInput('.lando.yml', inplace=True, backup='.bak') as file:
+        for line in file:
+            print(line.replace('REPLACE_NAME', projectName), end='')        
