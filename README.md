@@ -7,21 +7,30 @@ This package aims to be all you need to meet full Acro Standards development spe
 ### Composer
 
 1. You will need to specifically allow non-standard scaffold packages. Add the following to your composer.json
-
-```
+    ```
     "extra": {
         "drupal-scaffold": {
             "allowed-packages": [
                 "acromedia/drupal-scaffold"
-            ]
+            ],
+            "locations": {
+                "web-root": "./web",
+                "project-root": "."
+            }
         }
     }
-```
+    ```
 
 2. Use composer to add package as a dev dependency
     ```
     composer require acromedia/drupal-scaffold --dev
     ```
+
+3. (Optional) Setup your project name
+   ```
+   inv setname
+   ```
+   This will set the correct project name in the lando and phpunit config, otherwise you will have to do so manually
 
 ## Overridding
 
